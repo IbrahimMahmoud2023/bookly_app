@@ -2,7 +2,6 @@ import 'package:bookely_app/core/utils/assets_data.dart';
 import 'package:bookely_app/features/splash/presentation/views/widgets/slide_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../../constant.dart';
 import '../../../../home/presentation/view/home_view.dart';
