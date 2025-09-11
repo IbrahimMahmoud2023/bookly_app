@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/utils/style.dart';
 import 'custom_app_bar.dart';
 import 'custom_list_view_item.dart';
 import 'feature_books_list_view.dart';
@@ -10,11 +11,17 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: [
-          CustomAppBar(),
-          FeaturedBooksListViewItem()
-        ]
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 18),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomAppBar(),
+            FeaturedBooksListViewItem(),
+            const SizedBox(height: 50,),
+            Text('Best Seller',style: Style.titleMedium,),
+          ]
+      ),
     );
   }
 }
