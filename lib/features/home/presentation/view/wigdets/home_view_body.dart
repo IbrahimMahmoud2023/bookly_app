@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../../../../core/utils/assets_data.dart';
 import '../../../../../core/utils/style.dart';
 import 'custom_app_bar.dart';
 import 'feature_books_list_view.dart';
@@ -18,6 +19,9 @@ class HomeViewBody extends StatelessWidget {
             FeaturedBooksListViewItem(),
             const SizedBox(height: 50,),
             Text('Best Seller',style: Style.titleMedium,),
+            SizedBox(height: 15,),
+            BestSellerListViewItem(),
+
           ]
       ),
     );
@@ -25,3 +29,29 @@ class HomeViewBody extends StatelessWidget {
 }
 
 
+class BestSellerListViewItem extends StatelessWidget {
+  const BestSellerListViewItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 125,
+      child: Row(
+        children: [
+          AspectRatio(
+            aspectRatio: 2.5 / 4,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage(AssetsData.testImage),
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
