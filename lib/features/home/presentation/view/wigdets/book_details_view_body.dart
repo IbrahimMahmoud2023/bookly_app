@@ -2,7 +2,7 @@ import 'package:bookely_app/core/utils/style.dart';
 import 'package:bookely_app/features/home/presentation/view/wigdets/book_rating.dart';
 import 'package:bookely_app/features/home/presentation/view/wigdets/custom_book_item.dart';
 import 'package:flutter/material.dart';
-
+import 'book_action.dart';
 import 'custom_book_details_app_bar.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
@@ -34,10 +34,9 @@ class BookDetailsViewBody extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16),
-            BookRating(
-              mainAxisAlignment: MainAxisAlignment.center,
-            ),
-
+            BookRating(mainAxisAlignment: MainAxisAlignment.center),
+            SizedBox(height: 37),
+            BookAction(),
           ],
         ),
       ),

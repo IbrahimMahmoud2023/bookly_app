@@ -1,3 +1,4 @@
+import 'package:bookely_app/features/home/presentation/view/book_details_view.dart';
 import 'package:bookely_app/features/home/presentation/view/home_view.dart';
 import 'package:bookely_app/features/home/presentation/view/wigdets/book_details_view_body.dart';
 import 'package:go_router/go_router.dart';
@@ -11,7 +12,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => SplashView(),
+        builder: (context, state) => BookDetailsView(),
       ),
       GoRoute(
         path: kHomeView,
