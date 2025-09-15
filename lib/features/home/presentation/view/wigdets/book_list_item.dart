@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../../../../constant.dart';
 import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/assets_data.dart';
@@ -14,7 +12,7 @@ class BookListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         GoRouter.of(context).push(AppRouter.kBookDetailsVie);
       },
       child: SizedBox(
@@ -52,7 +50,9 @@ class BookListViewItem extends StatelessWidget {
                   const SizedBox(height: 3),
                   Text(
                     'J.K. Rowling',
-                    style: Styles.textStyle14.copyWith(color: Color(0xff707070)),
+                    style: Styles.textStyle14.copyWith(
+                      color: Color(0xff707070),
+                    ),
                   ),
                   const SizedBox(height: 3),
                   Row(
@@ -76,5 +76,3 @@ class BookListViewItem extends StatelessWidget {
     );
   }
 }
-
-
