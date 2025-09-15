@@ -11,6 +11,7 @@ class BookDetailsViewBody extends StatelessWidget {
     return CustomScrollView(
       slivers: const [
         SliverFillRemaining(
+          hasScrollBody: false,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 30, vertical: 24),
             child: Column(
