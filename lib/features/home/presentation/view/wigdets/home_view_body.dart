@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../../../../../core/utils/style.dart';
 import 'best_seller_list_view.dart';
-import 'book_list_item.dart';
 import 'custom_app_bar.dart';
 import 'feature_books_list_view.dart';
 
