@@ -7,7 +7,7 @@ class CustomErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(errorMessage);
+
     return Text(errorMessage,style: Styles.textStyle18,);
   }
 }
