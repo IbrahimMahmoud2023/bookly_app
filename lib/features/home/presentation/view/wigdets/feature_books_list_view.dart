@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/widgets/custom_circle_prograss_indicator.dart';
 import '../../../../../core/utils/widgets/custom_error_widget.dart';
 import '../../manager/featured_book_cubit/featured_book_cubit.dart';
@@ -19,12 +21,25 @@ class FeaturedBooksListViewItem extends StatelessWidget {
             child: ListView.builder(
               itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
-              physics:const BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: CustomBookImage(
-                    imageUrl: state.books[index].volumeInfo.imageLinks.thumbnail.replaceFirst('http://', 'https://'),
+                  child: GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).push(
+                        AppRouter.kBookDetailsVie,
+                        extra: state.books[index],
+                      );
+                    },
+                    child: CustomBookImage(
+                      imageUrl: state
+                          .books[index]
+                          .volumeInfo
+                          .imageLinks
+                          .thumbnail
+                          .replaceFirst('http://', 'https://'),
+                    ),
                   ),
                 );
               },

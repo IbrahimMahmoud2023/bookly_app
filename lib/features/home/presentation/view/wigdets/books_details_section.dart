@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/style.dart';
+import '../../../data/models/book_model/book_model.dart';
 import 'book_action.dart';
 import 'book_rating.dart';
 import 'custom_book_image.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
-
+  const BookDetailsSection({super.key, required this.bookModel});
+final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -17,29 +18,32 @@ class BookDetailsSection extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.30),
           child: CustomBookImage(
-            imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOnM46OOe4KY6wki7hElZs5Z_Oi_enbGDZKg&s',
+            imageUrl:bookModel.volumeInfo.imageLinks.thumbnail.replaceFirst('http://', 'https://') ,
           ),
         ),
         SizedBox(height: 43),
         Text(
-          'The Jungle Book',
+          bookModel.volumeInfo.title!,
+          textAlign: TextAlign.center,
           style: Styles.textStyle30.copyWith(fontWeight: FontWeight.w500),
         ),
         SizedBox(height: 6),
         Opacity(
           opacity: 0.7,
           child: Text(
-            'Rudyard Kipling',
+            bookModel.volumeInfo.authors!.first,
             style: Styles.textStyle18.copyWith(fontWeight: FontWeight.w500),
           ),
         ),
         SizedBox(height: 16),
         BookRating(
-            rating: 5,
-            count: 1000,
+            rating: bookModel.volumeInfo.averageRating,
+            count: bookModel.volumeInfo.ratingsCount,
             mainAxisAlignment: MainAxisAlignment.center),
         SizedBox(height: 37),
-        BookAction(),
+        BookAction(
+          bookModel: bookModel,
+        ),
       ],
     );
   }
