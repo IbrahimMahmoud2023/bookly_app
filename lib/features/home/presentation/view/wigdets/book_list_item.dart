@@ -4,18 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../constant.dart';
 import '../../../../../core/utils/app_router.dart';
-import '../../../../../core/utils/assets_data.dart';
 import '../../../../../core/utils/style.dart';
 import 'book_rating.dart';
 
 class BookListViewItem extends StatelessWidget {
   const BookListViewItem({super.key, required this.bookModel});
-final BookModel bookModel;
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsVie,extra: bookModel);
+        GoRouter.of(context).push(AppRouter.kBookDetailsVie, extra: bookModel);
       },
       child: SizedBox(
         height: 125,
@@ -23,7 +22,11 @@ final BookModel bookModel;
           children: [
             AspectRatio(
               aspectRatio: 2.5 / 4,
-              child: CustomBookImage(imageUrl: bookModel.volumeInfo.imageLinks.thumbnail.replaceFirst('http://', 'https://')),
+              child: CustomBookImage(
+                imageUrl:
+                    bookModel.volumeInfo.imageLinks?.thumbnail ??
+                    "".replaceFirst('http://', 'https://'),
+              ),
             ),
             SizedBox(width: 30),
             Expanded(
@@ -33,7 +36,7 @@ final BookModel bookModel;
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: Text(
-                      bookModel.volumeInfo.title!,
+                      bookModel.volumeInfo.title ?? 'No Title',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.textStyle20.copyWith(
@@ -43,12 +46,15 @@ final BookModel bookModel;
                   ),
                   const SizedBox(height: 3),
                   Text(
-                    bookModel.volumeInfo.authors!.first,
+                    bookModel.volumeInfo.authors?.first ?? 'Unknown Author',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle14.copyWith(
                       color: Color(0xff707070),
                     ),
                   ),
                   const SizedBox(height: 3),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -59,8 +65,8 @@ final BookModel bookModel;
                         ),
                       ),
                       BookRating(
-                        rating: bookModel.volumeInfo.averageRating,
-                        count: bookModel.volumeInfo.ratingsCount,
+                        rating: bookModel.volumeInfo.averageRating ?? 0,
+                        count: bookModel.volumeInfo.ratingsCount ?? 0,
                       ),
                     ],
                   ),

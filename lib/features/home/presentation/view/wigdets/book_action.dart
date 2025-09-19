@@ -1,8 +1,6 @@
 import 'package:bookely_app/core/utils/functions/launch_url.dart';
 import 'package:bookely_app/features/home/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../../../../../core/utils/widgets/custom_button.dart';
 
 class BookAction extends StatelessWidget {
@@ -22,13 +20,13 @@ class BookAction extends StatelessWidget {
               ),
               backgroundColor: Colors.white,
               textColor: Colors.black,
-               text: 'Free',
+              text: 'Free',
             ),
           ),
           Expanded(
             child: CustomButton(
               onPressed: () async {
-               launchCustomUrl(context, bookModel.volumeInfo.previewLink);
+                launchCustomUrl(context, bookModel.volumeInfo.previewLink);
               },
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(16),
@@ -46,9 +44,9 @@ class BookAction extends StatelessWidget {
   }
 
   String getText(BookModel bookModel) {
-    if(bookModel.volumeInfo.previewLink == null){
+    if (bookModel.volumeInfo.previewLink == null) {
       return 'Not Available';
-    }else {
+    } else {
       return 'Preview';
     }
   }

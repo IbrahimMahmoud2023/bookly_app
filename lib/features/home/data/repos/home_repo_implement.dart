@@ -8,13 +8,15 @@ import '../../../../core/utils/api_services.dart';
 
 class HomeRepoImpl implements HomeRepo {
   ApiServices apiServices;
+
   HomeRepoImpl(this.apiServices);
+
   @override
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
     try {
       var data = await apiServices.get(
         endPoint:
-            'volumes?Filtering=free-ebooks&Sorting=newest&q=computer science',
+        'volumes?Filtering=free-ebooks&Sorting=newest&q=computer science',
       );
       List<BookModel> books = [];
       for (var item in data['items']) {
@@ -35,11 +37,10 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks()async {
+  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
       var data = await apiServices.get(
-        endPoint:
-        'volumes?Filtering=free-ebooks&q=subject:Programming',
+        endPoint: 'volumes?Filtering=free-ebooks&q=subject:Programming',
       );
       List<BookModel> books = [];
       for (var item in data['items']) {
@@ -56,7 +57,9 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({required String category})async {
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({
+    required String category,
+  }) async {
     try {
       var data = await apiServices.get(
         endPoint:
@@ -75,4 +78,6 @@ class HomeRepoImpl implements HomeRepo {
       }
     }
   }
+
+
 }

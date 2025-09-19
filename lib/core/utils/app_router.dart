@@ -1,5 +1,6 @@
 import 'package:bookely_app/core/utils/service_locator.dart';
 import 'package:bookely_app/features/home/data/repos/home_repo_implement.dart';
+import 'package:bookely_app/features/home/presentation/manager/search_books_cubit/search_book_cubit.dart';
 import 'package:bookely_app/features/home/presentation/view/book_details_view.dart';
 import 'package:bookely_app/features/home/presentation/view/home_view.dart';
 import 'package:bookely_app/features/search/presentation/views/search_view.dart';
@@ -8,6 +9,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/home/data/models/book_model/book_model.dart';
 import '../../features/home/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
+import '../../features/search/data/repos/search_repo_implement.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
@@ -23,7 +25,11 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kSearchView,
-        builder: (context, state) => SearchView(),
+        builder: (context, state) =>
+            BlocProvider(
+              create: (context) => SearchBookCubit(getIt.get<HomeRepoImpl>(), getIt.get<SearchRepoImpl>()),
+              child: SearchView(),
+            ),
       ),
       GoRoute(
         path: kHomeView,
